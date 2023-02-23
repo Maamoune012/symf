@@ -40,8 +40,16 @@ class CheckoutController extends AbstractController
         $from= $this.createForm(CheckoutType::class, $delivery);
         $from->handleRequest($request);
 
+        if($request->isMethod('POST')){
+            if($form->isSubmitted() && $form->isValid()){
+                $em= $doctrine->getManager();
+            }
+            echo "Saved"
+        }
+
         return $this->renderForm('checkout/index.html.twig', [
             'form'-> $form
         ]);
     }
+    
 }
