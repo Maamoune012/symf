@@ -19,6 +19,7 @@ use App\Entity\Photo;
 use App\Entity\Product;
 use App\Entity\Review;
 use App\Entity\User;
+use App\Entity\Carrier;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -77,6 +78,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Arrivals', 'fas fa-list', Arrival::class);
         yield MenuItem::linkToCrud('Arrivals details', 'fas fa-list', ArrivalDetails::class);
 
+        yield MenuItem::linkToCrud('Carrier', 'fas fa-truck', Carrier::class);
         yield MenuItem::linkToCrud('Orders', 'fas fa-list', Order::class);
         yield MenuItem::linkToCrud('Order details', 'fas fa-list', OrderDetails::class);
         yield MenuItem::linkToCrud('Payments', 'fas fa-list', Payment::class);
