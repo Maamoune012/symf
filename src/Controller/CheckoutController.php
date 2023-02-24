@@ -4,9 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Order;
 use App\Entity\OrderDetails;
+use App\Form\CheckoutType;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+//use Symfony\Component\Form\Form;
+use Symfony\Entity\Form;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,9 +21,11 @@ class CheckoutController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/checkout', name: 'app_checkout')]
+    #[Route('/commande', name: 'order')]
     public function index($form, $cart): Response
-    {
+    {    
+        $this->entityManager->persist($form);
+
         //private $form;
         //$form->sendRequest($request);
         if($form->isSubmitted() && $form->isValid){
@@ -35,10 +40,12 @@ class CheckoutController extends AbstractController
         $order = new Order();
         $order->setUser($this->getUser());
         $order->setCreatedAt($date);
-        $order->setCarrierName($carriers->getName());
-        $order->setCarrierPrice($carriers->getPrice());
+        $order->setCarrierName($carriers->getCarrierName());
+        $order->setCarrierPrice($carriers->getCarrierPrice());
         $order->setDelivery($delivery_content);
         //$order->setisPaid(isPaid: 0);
+
+        $this->entityManager->persist($order);
 
         //Enregistrer mes produits OrderDetails()
         foreach($cart->getFull() as $product){
@@ -52,10 +59,15 @@ class CheckoutController extends AbstractController
         }
 
         return $this->render('checkout/index.html.twig', [
-            'controller_name' => 'CheckoutController',
+            //'controller_name' => 'CheckoutController',
+            'cart' => $cart->getFull(),
+            'carrier' => $carriers,
+            'delivery' => $delivery_content
         ]);
 
     }
+
+    //return $this->redirectToRoute(route: 'cart');
 }
 
 
