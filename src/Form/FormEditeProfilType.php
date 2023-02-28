@@ -20,10 +20,10 @@ class FormEditeProfilType extends AbstractType
         ])
         
         ->add('lastname', TextType::class, [
-            'label' => 'Prenom'
+            'label' => 'Nom'
         ])
         ->add('firstname', TextType::class, [
-            'label' => 'Nom'
+            'label' => 'Prenom'
         ])
         ->add('submit', SubmitType::class, [
             'label' => 'Modifier'
