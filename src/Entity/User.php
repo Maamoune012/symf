@@ -51,17 +51,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $login_at = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class)]
-    private Collection $orders;
+    // #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class)]
+    // private Collection $orders;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Delivery::class)]
-    private Collection $deliveries;
+    // #[ORM\OneToMany(mappedBy: 'user', targetEntity: Delivery::class)]
+    // private Collection $deliveries;
 
-    public function __construct()
-    {
-        $this->orders = new ArrayCollection();
-        $this->deliveries = new ArrayCollection();
-    }
+    // public function __construct()
+    // {
+    //     $this->orders = new ArrayCollection();
+    //     $this->deliveries = new ArrayCollection();
+    // }
 
     public function getId(): ?int
     {
@@ -226,64 +226,64 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+// 
+//     /**
+//      * @return Collection<int, Order>
+//      */
+//     public function getOrders(): Collection
+//     {
+//         return $this->orders;
+//     }
 
-    /**
-     * @return Collection<int, Order>
-     */
-    public function getOrders(): Collection
-    {
-        return $this->orders;
-    }
+//     public function addOrder(Order $order): self
+//     {
+//         if (!$this->orders->contains($order)) {
+//             $this->orders->add($order);
+//             $order->setUser($this);
+//         }
 
-    public function addOrder(Order $order): self
-    {
-        if (!$this->orders->contains($order)) {
-            $this->orders->add($order);
-            $order->setUser($this);
-        }
+//         return $this;
+//     }
 
-        return $this;
-    }
+//     public function removeOrder(Order $order): self
+//     {
+//         if ($this->orders->removeElement($order)) {
+//             // set the owning side to null (unless already changed)
+//             if ($order->getUser() === $this) {
+//                 $order->setUser(null);
+//             }
+//         }
 
-    public function removeOrder(Order $order): self
-    {
-        if ($this->orders->removeElement($order)) {
-            // set the owning side to null (unless already changed)
-            if ($order->getUser() === $this) {
-                $order->setUser(null);
-            }
-        }
+//         return $this;
+//     }
 
-        return $this;
-    }
+//     /**
+//      * @return Collection<int, Delivery>
+//      */
+//     public function getDeliveries(): Collection
+//     {
+//         return $this->deliveries;
+//     }
 
-    /**
-     * @return Collection<int, Delivery>
-     */
-    public function getDeliveries(): Collection
-    {
-        return $this->deliveries;
-    }
+//     public function addDelivery(Delivery $delivery): self
+//     {
+//         if (!$this->deliveries->contains($delivery)) {
+//             $this->deliveries->add($delivery);
+//             $delivery->setUser($this);
+//         }
 
-    public function addDelivery(Delivery $delivery): self
-    {
-        if (!$this->deliveries->contains($delivery)) {
-            $this->deliveries->add($delivery);
-            $delivery->setUser($this);
-        }
+//         return $this;
+//     }
 
-        return $this;
-    }
+//     public function removeDelivery(Delivery $delivery): self
+//     {
+//         if ($this->deliveries->removeElement($delivery)) {
+//             // set the owning side to null (unless already changed)
+//             if ($delivery->getUser() === $this) {
+//                 $delivery->setUser(null);
+//             }
+//         }
 
-    public function removeDelivery(Delivery $delivery): self
-    {
-        if ($this->deliveries->removeElement($delivery)) {
-            // set the owning side to null (unless already changed)
-            if ($delivery->getUser() === $this) {
-                $delivery->setUser(null);
-            }
-        }
-
-        return $this;
-    }
+//         return $this;
+//     }
 }

@@ -38,18 +38,18 @@ class Order
      #[ORM\OneToMany(mappedBy: 'order_', targetEntity: Delivery::class)]
     private Collection $deliveries; 
 
-    #[ORM\ManyToOne(inversedBy: 'orders')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
+    // #[ORM\ManyToOne(inversedBy: 'orders')]
+    // #[ORM\JoinColumn(nullable: false)]
+    // private ?User $user = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $carrierName = null;
+    // #[ORM\Column(length: 255)]
+    // private ?string $carrierName = null;
 
-    #[ORM\Column]
-    private ?float $carrierPrice = null;
+    // #[ORM\Column]
+    // private ?float $carrierPrice = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $delivery = null;
+    // #[ORM\Column(type: Types::TEXT)]
+    // private ?string $delivery = null;
 
     public function __construct()
     {
@@ -187,51 +187,51 @@ class Order
         return $this;
     } 
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
+    // public function getUser(): ?User
+    // {
+    //     return $this->user;
+    // }
 
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
+    // public function setUser(?User $user): self
+    // {
+    //     $this->user = $user;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getCarrierName(): ?string
-    {
-        return $this->carrierName;
-    }
+    // public function getCarrierName(): ?string
+    // {
+    //     return $this->carrierName;
+    // }
 
-    public function setCarrierName(string $carrierName): self
-    {
-        $this->carrierName = $carrierName;
+    // public function setCarrierName(string $carrierName): self
+    // {
+    //     $this->carrierName = $carrierName;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getCarrierPrice(): ?float
-    {
-        return $this->carrierPrice;
-    }
+    // public function getCarrierPrice(): ?float
+    // {
+    //     return $this->carrierPrice;
+    // }
 
-    public function setCarrierPrice(float $carrierPrice): self
-    {
-        $this->carrierPrice = $carrierPrice;
+    // public function setCarrierPrice(float $carrierPrice): self
+    // {
+    //     $this->carrierPrice = $carrierPrice;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getDelivery(): ?string
-    {
-        return $this->delivery;
-    }
+    // public function getDelivery(): ?string
+    // {
+    //     return $this->delivery;
+    // }
 
-    public function setDelivery(string $delivery): self
-    {
-        $this->delivery = $delivery;
+    // public function setDelivery(string $delivery): self
+    // {
+    //     $this->delivery = $delivery;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }
