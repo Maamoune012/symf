@@ -29,10 +29,10 @@ class CustomerCrudController extends AbstractCrudController
             DateTimeField::new('created_at'),
         ];
     }
-    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    /*public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         if(!$entityInstance instanceof Customer) return;
         if(!$entityInstance->getCreatedAt()) $entityInstance->setCreatedAt(new \DateTimeImmutable);
         parent::persistEntity($entityManager, $entityInstance);
-    }
+    }*/
 }

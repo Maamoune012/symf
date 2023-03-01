@@ -31,8 +31,8 @@ class Customer
     #[ORM\OneToMany(mappedBy: 'customer', targetEntity: Order::class)]
     private Collection $orders;
 
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $created_at = null;
+    /*#[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $created_at = null;*/
 
     public function __construct()
     {
@@ -122,7 +122,7 @@ class Customer
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    /*public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
     }
@@ -132,6 +132,6 @@ class Customer
         $this->created_at = $created_at;
 
         return $this;
-    }
+    }*/
 
 }
