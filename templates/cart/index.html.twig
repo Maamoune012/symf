@@ -75,7 +75,7 @@
                
             </div>
             <div class="col-lg-4">
-                <form class="mb-30" action="">
+                <form class="mb-30" action="{{ path('apply_Coupon', { 'code' : 0 }) }}">
                     <div class="input-group">
                         <input type="text" class="form-control border-0 p-4" placeholder="Coupon Code">
                         <div class="input-group-append">
@@ -100,7 +100,7 @@
                             <h5>Total</h5>
                             <h5>{{ total }}</h5>
                         </div>
-                        <a href="">
+                        <a href="{{ path('app_checkout') }}">
                         <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
                         <a/>
                     </div>

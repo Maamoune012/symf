@@ -104,6 +104,41 @@ public function delete($id)
 
     }
 
+    public function applyCoupon($code)
+{
+    $session = $this->requestStack->getSession();
+
+
+    $coupon = $this->entityManager->getRepository(Coupon::class)->findOneByCode($code);
+
+    if (!$coupon) {
+        return false;
+    }
+
+    $cart = $this->getFull();
+
+    $total = 0;
+
+    foreach ($cart as $item) {
+        $total += $item['product']->getPrice() * $item['quantity'];
+    }
+
+    $discountAmount = 0;
+
+    if ($coupon->getType() == 'couponType1') {
+        $discountAmount = $total * ($coupon->getValue() / 100);
+    } elseif ($coupon->getType() == 'couponType2') {
+        $discountAmount = $coupon->getValue();
+    }
+
+    $session->set('coupon', [
+        'code' => $coupon->getCode(),
+        'discount' => $discountAmount
+    ]);
+
+    return true;
+}
+
     
 
     

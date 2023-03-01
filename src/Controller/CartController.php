@@ -55,6 +55,20 @@ class CartController extends AbstractController
         return $this->redirectToRoute('app_cart');
     }
     
+    #[Route('/cart/applyCoupon/{code}', name: 'apply_Coupon')]
+    public function applyCoupon(Cart $cart, Request $request)
+    {
+        $code = $request->request->get('code');
+
+        if ($cart->applyCoupon($code)) {
+            return $this->redirectToRoute('app_cart');
+        }
+
+        return $this->render('cart/index.html.twig', [
+            'cart' => $cart->getFull(),
+            'error' => 'Code de coupon invalide.',
+        ]);
+    }
 }
 
 
