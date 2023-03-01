@@ -26,7 +26,7 @@ class CustomerCrudController extends AbstractCrudController
             TextField::new('address'),
             TextField::new('city'),
             TextField::new('tel'),
-            DateTimeField::new('created_at'),
+            //DateTimeField::new('created_at'),
         ];
     }
     /*public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
