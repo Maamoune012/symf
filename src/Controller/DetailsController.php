@@ -19,13 +19,16 @@ class DetailsController extends AbstractController
     }
     
     #[Route('/details/{slug}', name: 'app_details')]
-    public function index($slug): Response
+    public function show($slug): Response
     {
         $product = $this->entityManager->getRepository(Product::class)->findOneBySlug($slug);
         if(!$product) return $this->redirectToRoute('app_home');
         
         return $this->render('details/index.html.twig', [
             'product' => $product,
+            
         ]);
     }
+
+
 }
