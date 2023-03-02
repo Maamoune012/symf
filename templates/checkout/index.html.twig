@@ -22,7 +22,7 @@
 
 
     <!-- Checkout Start -->
-    <form action="/commande" method="post">
+    <form action="/commande/create-session" method="post">
     <div class="container-fluid">
         <div class="row px-xl-5">
             <div class="col-lg-8">
@@ -74,21 +74,21 @@
                             <label>ZIP Code</label>
                             <input class="form-control" type="text" placeholder="123">
                         </div>
-                        <div class="col-md-12 form-group">
+                        <!-- <div class="col-md-12 form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="newaccount">
                                 <label class="custom-control-label" for="newaccount">Create an account</label>
                             </div>
-                        </div>
-                        <div class="col-md-12">
+                        </div> -->
+                        <!-- <div class="col-md-12">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="shipto">
                                 <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-                <div class="collapse mb-5" id="shipping-address">
+                <!-- <div class="collapse mb-5" id="shipping-address">
                     <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Shipping Address</span></h5>
                     <div class="bg-light p-30">
                         <div class="row">
@@ -139,7 +139,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="col-lg-4">
                 <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Order Total</span></h5>
@@ -221,6 +221,7 @@
             return response.json();
         })
         .then(function(session) {
+            var stripe = Stripe("pk_test_51McVkAFVqpwutoMi9n9L0vONtbG0fOoI0F5tb5rN3zr6HyXTer7iWsJ3HqJkwjIsFjSuioxwO4KNoaaq6UBf0CGh00hTSH7xTD");
             return stripe.redirectToCheckout({sessionId: session.id});
         })
         .then(function(result) {
