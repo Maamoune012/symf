@@ -1,23 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modider mon mot de passe{% endblock %}
+{% block title %}Mon compte{% endblock %}
 
 {% block content %}
 <div style="text-align:center; margin-top:15px;">
-		<h2>Modifier votre mot de passe</h2>
+		<h2>Editer le Profil d'utilisateur</h2>
 	</div>
-
 	<div class="" style="padding-top:1px;margin-left:11%;margin-right:11%;padding:5%;box-shadow: 6px 5px 11px black;border-radius: 23px;background-color: white;">
-		{% if notification %}
-			<div class="alert alert-danger d-flex align-items-center" role="alert">
-				<i class="fa fa-triangle-exclamation"></i>
-				{{ notification }}
-			</div>
-		{% endif %}
-		{{ form(form)}}
-         <hr>
+		{{form(form)}}
+        <hr>
     <li> <a href="{{ path('app_account') }}">Retour à mon compte</a></li>
 		</div>
-
-  
-{% endblock %} 
+{% endblock %}
