@@ -13,6 +13,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="{{ asset('assets/css/compte.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">  
 
     <!-- Font Awesome -->
@@ -42,11 +43,27 @@
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
+                    {% if app.user %}
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">{{ app.user}}</button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button">Sign in</button>
-                            <button class="dropdown-item" type="button">Sign up</button>
+                            <a href="{{path('app_account')}}">
+											<button class="dropdown-item" type="button">Mon Compte</button>
+										</a>
+                            <a href="{{path('app_logout')}}">
+											<button class="dropdown-item" type="button">Se deconnecter</button>
+										</a>
                         </div>
+                        {% else %}
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Connexion</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<a href="{{path('app_login')}}">
+											<button class="dropdown-item" type="button">Se connecter</button>
+										</a>
+										<a href="{{path('app_register')}}">
+											<button class="dropdown-item" type="button">S'inscrirer</button>
+										</a>
+									</div>
+								{% endif %}
                     </div>
                     <div class="btn-group mx-2">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">XOF</button>
@@ -159,7 +176,7 @@
                                 <i class="fas fa-heart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
                             </a>
-                            <a href="" class="btn px-0 ml-3">
+                            <a href="{{path('app_cart')}}" class="btn px-0 ml-3">
                                 <i class="fas fa-shopping-cart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
                             </a>
