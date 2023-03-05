@@ -13,17 +13,14 @@ class CheckoutController extends AbstractController
 {
 
     #[Route('/checkout', name: 'app_checkout')]
+    public function index()
+    {
+        return $this->render('checkout/index.html.twig', [
+            'controller_name' => 'CheckoutController',
+        ]);
+        
+        //Enregistrer mes produits OrderDetails()    
    
-
-   
-    public function index() : Response
-    {   
-        return $this->render('checkout/index.html.twig'/* , [
-            "delivery" => $delivery
-        ] */);
-    }
-
-    
-   
+}
 }
 
