@@ -28,8 +28,8 @@ class Delivery
     #[ORM\Column(length: 25)]
     private ?string $state = null;
 
-    #[ORM\ManyToOne(inversedBy: 'deliveries')]
-    private ?Order $order_ = null;
+     #[ORM\ManyToOne(inversedBy: 'deliveries')]
+    private ?Order $order_ = null; 
 
     #[ORM\ManyToOne]
     private ?User $delivered_by = null;
@@ -131,7 +131,7 @@ class Delivery
 
         return $this;
     }
-
+ 
     public function getDeliveredBy(): ?User
     {
         return $this->delivered_by;
